@@ -3,12 +3,12 @@
 @section('title', 'tiket-jadi')
 
 @section('content')
-    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #c3dafe; border-radius: 12px; padding: 24px;">
+    <div style="max-width: 600px; margin: 0 auto; margin-top: 24px; border: 1px solid #c3dafe; border-radius: 12px; padding: 24px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
             <!-- Logo & Maskapai -->
             <div style="display: flex; align-items: center;">
-                {{-- <img src="{{ asset('storage/images/maskapai/') }}" alt="Logo Maskapai" style="width: 64px; height: auto; margin-right: 12px;">
-              --}}  <div> 
+                    <img src="{{ asset('images/'. $pesanan->penerbangan->pesawat->maskapai->logo) }}" alt="Logo Maskapai" style="width: 64px; height: auto; margin-right: 12px;">
+                    <div> 
                     <h2 style="font-size: 20px; font-weight: bold; color: #1d4ed8; margin: 0;">
                         {{ $pesanan->penerbangan->pesawat->maskapai->nama }}
                     </h2>
@@ -50,7 +50,7 @@
             <div style="width: 45%;">
                 <p style="font-size: 12px; color: #6b7280; margin: 0;">Kota Asal</p>
                 <p style="font-size: 16px; font-weight: bold; color: #1e40af; margin: 0;">
-                    {{ $pesanan->penerbangan->bandaraAsal->nama_kota }} {{ $pesanan->penerbangan->bandaraAsal->slug }}
+                    {{ $pesanan->penerbangan->bandaraAsal->kota->nama_kota }}
                 </p>
             </div>
 
@@ -58,7 +58,7 @@
             <div style="width: 45%;">
                 <p style="font-size: 12px; color: #6b7280; margin: 0;">Kota Tujuan</p>
                 <p style="font-size: 16px; font-weight: bold; color: #1e40af; margin: 0;">
-                    {{ $pesanan->penerbangan->bandaraTujuan->nama_kota }} {{ $pesanan->penerbangan->bandaraTujuan->slug }}
+                    {{ $pesanan->penerbangan->bandaraTujuan->kota->nama_kota }}
                 </p>
             </div>
 
@@ -66,7 +66,7 @@
             <div style="width: 45%;">
                 <p style="font-size: 12px; color: #6b7280; margin: 0;">Bandara Keberangkatan</p>
                 <p style="font-size: 16px; font-weight: bold; color: #1e40af; margin: 0;">
-                    {{ $pesanan->penerbangan->bandaraAsal->kota->nama_kota }}
+                    {{ $pesanan->penerbangan->bandaraAsal->nama_bandara }}
                 </p>
             </div>
 
@@ -92,7 +92,7 @@
     </div>
 
     <!-- Tombol Export PDF -->
-<div style="text-align: center; margin-top: 24px;">
+<div style="text-align: center; margin-top: 24px; margin-bottom: 24px;">
     <form method="POST" action="{{ route('download.tiket') }}">
         @csrf
         <input type="hidden" name="kode_booking" value="{{ $pesanan->kode_booking }}">
