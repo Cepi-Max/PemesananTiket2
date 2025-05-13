@@ -41,7 +41,7 @@
                     <div class="grid grid-cols-3 gap-6 items-center">
                         <div class="flex justify-center">
                             @if ($penerbangan->pesawat && $penerbangan->pesawat->maskapai && $penerbangan->pesawat->maskapai->logo)
-                                <img src="{{ asset('storage/images/maskapai/' . $penerbangan->pesawat->maskapai->logo) }}"
+                                <img src="{{ asset('images/' . $penerbangan->pesawat->maskapai->logo) }}"
                                     alt="Logo Maskapai"
                                     class="w-32 h-32 object-contain rounded-full border-2 border-gray-500">
                             @else
